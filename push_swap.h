@@ -14,6 +14,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
@@ -24,5 +25,8 @@ typedef struct s_node
 	int				index;
 	struct s_node	*next;
 }	t_node;
+
+char	*ft_strndup(char *str, int n);
+char	**ft_split(const char *str, int c);
 
 #endif
