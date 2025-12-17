@@ -1,5 +1,5 @@
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	ft_countwords(const char *str, int c)
 {
@@ -41,6 +41,8 @@ char	*ft_trim(const char *str, int c)
 	int i;
 	
 	if (!str)
+		return (NULL);
+	if (!ft_strchr(str, ' '))
 		return (NULL);
 	start = 0;
 	end = ft_len(str);
@@ -107,7 +109,7 @@ char	**ft_split(const char *str, int c)
 		}	
 	}
 	numbres[j] = NULL;
-	 free(str_trim);
+	free(str_trim);
 	return (numbres);
 }
 
