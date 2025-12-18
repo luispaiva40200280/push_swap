@@ -1,4 +1,4 @@
-
+/* 
 #include "../push_swap.h"
 
 int	ft_countwords(const char *str, int c)
@@ -113,3 +113,84 @@ char	**ft_split(const char *str, int c)
 	return (numbres);
 }
 
+ */
+#include "../push_swap.h"
+
+void free_all(char **arr, int n)
+{
+	int i = 0;
+	while (i < n)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+int	ft_countwords(const char *str, int c)
+{
+	int words;
+	int i;
+
+	if (! str)
+		return (0);
+	i = 0;
+	words = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i])
+			words++;
+		while (str[i] && str[i] != c)
+			i++;
+	}
+	return (words);
+}
+
+int	ft_len(const char *str)
+{
+	int	len;
+	
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+
+char	**ft_split(const char *str, char c)
+{
+	char	**result;
+	int		words;
+	int		i;
+	int		start;
+
+	if (!str)
+		return (NULL);
+	words = ft_countwords(str, c);
+	if (words == 0)
+		return (NULL);
+	result = malloc(sizeof(char *) * (words + 1));  // +1 for NULL terminator
+	if (!result)
+		return (NULL);
+	i = 0;
+	words = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i])
+		{
+			start = i;
+			while (str[i] && str[i] != c)
+				i++;
+			result[words] = ft_strndup((char *)str + start, i - start);
+			if (!result[words])
+				return (NULL);
+			words++;
+		}
+	}
+	result[words] = NULL;  // NULL terminate the array
+	return (result);
+}

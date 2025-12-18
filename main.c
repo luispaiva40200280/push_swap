@@ -6,74 +6,70 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:25 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/17 01:35:56 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/18 01:04:55 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // this main will be use for testting the code 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int *init_list_one(char *argv, int *nbrs)
 {
-	if (ac == 1)
-		return(ft_printf("Error\n"), 0);
-	else if (ac == 2)
+	char	**numbers;
+	int		i;
+	int		size;
+	int		value;
+	
+	size = ft_countwords((const char *)argv, ' ');
+	numbers = ft_split(argv, ' ');
+	if (!numbers)
+		return (ft_printf("Error\n"), NULL);
+	nbrs = (int *)malloc(sizeof(int) * size);
+	if (!nbrs)
+		return (ft_printf("Error\n"), free(numbers), NULL);
+	i = 0;
+	while (numbers[i])
 	{
-		char	**n_char; 
-		int		*nbrs;
-		int 	value;
-		int		i; 
-		
-		n_char = ft_split(av[1], ' ');
-		if (!n_char)
-			return (ft_printf("error\n"), 0);
-		nbrs = malloc(sizeof(int) * ft_countwords((const char *)av[1], ' '));
-		i = 0;
-		/* while (n_char[i] )
-		{
-			ft_printf("%s", n_char[i]);
-			i++;
-		} */
-		while (n_char[i])
-		{
-			value = ft_atol(n_char[i]);
-			if (ft_find_number(nbrs, i , value))
-				return (ft_printf("Error\n"), 0); //erro 
-			nbrs[i++] = value;
-			ft_printf("%d ", nbrs[i - 1]);
-		}
-		free(nbrs);
-		free(n_char);
+		value = ft_atol(numbers[i]);
+		nbrs[i] = value;
+		if (ft_find_number(nbrs, i, value))
+			return (ft_printf("Error\n"), free(numbers), free(nbrs), NULL);
+		i++;	
 	}
-	else if (ac > 2)
-{
-	int i = 1;
-	int j = 0;
-	int *nunb;
-
-	nunb = malloc(sizeof(int) * (ac - 1));
-	if (!nunb)
-		return (1);
-
-	while (i < ac)
-	{
-		nunb[j] = ft_atol(av[i]);
-		if (nunb[j] == '\0')
-			return (free(nunb),0);
-		j++;
-		i++;
-	}
-
-	j = 0;
-	while (j < ac - 1)
-	{
-		//ft_printf("%d\n", nunb[j]);
-		printf("%d ", nunb[j]);
-		j++;
-	}
-
-	free(nunb);
+	return (free(numbers),nbrs);
 }
 
-	return (0);
+int  *init_list_more(char **argv, int *nbrs , int size)
+{
+	int value;
+	int i;
+
+
+	nbrs = (int *)malloc(sizeof(int) * size);
+	if (!nbrs)
+		return (ft_printf("Error in malloc\n"), NULL);
+	i = 0;
+	while (i < size)
+	{
+		value = ft_atol(argv[i]);
+		nbrs[i] = value;
+		if (ft_find_number(nbrs, i, value))
+			return (ft_printf("Error\n"), free(nbrs), NULL);
+		i++;
+	}
+	return (nbrs);
+}
+
+int main(int argc, char **argv)
+{
+	int	*nbrs;
+
+	nbrs = NULL;
+	if (argc < 2)
+		return (ft_printf("Error\n"), 1);
+	else if(argc == 2)
+		nbrs = init_list_one(argv[1], nbrs); 
+	else if (argc > 2)
+		nbrs = init_list_more(argv + 1, nbrs, argc - 1);
+	return (free(nbrs), 0);
 }

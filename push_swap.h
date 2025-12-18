@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:08 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/17 00:26:07 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/17 21:46:50 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_node
 }	t_node;
 
 char	*ft_strndup(char *str, int n);
-char	**ft_split(const char *str, int c);
+char	**ft_split(const char *str, char c);
 
 int 	ft_find_number(int *numbers, int size, int value);
 int		ft_countwords(const char *str, int c);

@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 21:15:33 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/17 02:45:25 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/17 22:03:43 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_handler(const char flag, va_list args ,int count)
 	if (flag == 'c')
 		count = ft_putchar(va_arg(args, int), count);
     else if (flag == 's')
-		count = ft_putstr(va_arg(args, char *), count, 2);
+		count = ft_putstr(va_arg(args, char *), count, 1);
 	else if (flag == 'd' || flag == 'i')
 		count = ft_putnbr_base((long long)va_arg(args, int), "0123456789", 10, count);
 	else if (flag == 'u')
