@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 20:40:12 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/17 21:36:29 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/18 01:27:12 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int ft_atol(char *str)
         i++;
 	}
 	number = number * sign;
-	if (number >= INT_MAX || number <= INT_MIN)
+	if (number > INT_MAX || number < INT_MIN)
 		return (ft_printf("error\n"), 0);
 	return ((int)number);
 }
