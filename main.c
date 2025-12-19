@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:25 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/19 02:11:03 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/19 03:40:24 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,4 @@ int	main(int argc, char **argv)
 		return (free(nbrs), ft_printf("Error\n") ,0);
 	print_list(list_a);
 	return (free_list(list_a), free(nbrs), 0);
-	
 }
