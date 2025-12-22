@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:25 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/19 03:40:24 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/22 20:13:52 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,12 @@ int	main(int argc, char **argv)
 	}
 	if (!list_a)
 		return (free(nbrs), ft_printf("Error\n") ,0);
-	print_list(list_a);
+	handler_sort(list_a);
+	while (list_a)
+	{
+		printf("[value: %d | index: %d] -> ", list_a->value, list_a->index);
+		list_a = list_a->next;
+	}
+	printf("NULL\n");
 	return (free_list(list_a), free(nbrs), 0);
 }

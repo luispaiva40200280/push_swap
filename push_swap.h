@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:08 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/18 21:31:23 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/22 20:40:07 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,18 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-/* creation of the stack */
+/* creation of the stack and sorting*/
 t_node		*build_from_arr(int *arr, int size);
 void		free_list(t_node *head);
+int			is_sort(t_node *lst);
+int			lst_size(t_node *lst);
+void		handler_sort(t_node **lst);
+void		sort_3(t_node **lst);
+void		sort_5(t_node **lst);
+void		ass_index(t_node *lst);
+void		sa(t_node **lst, int to_print);
+
+
 
 /* helper func for ft_ptintf */
 int		ft_printf(const char *format, ...);

@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_size.c                                         :+:      :+:    :+:   */
+/*   sort_small_lst.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 00:54:30 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/19 00:56:02 by lpaiva           ###   ########.fr       */
+/*   Created: 2025/12/19 20:25:45 by lpaiva            #+#    #+#             */
+/*   Updated: 2025/12/22 20:39:06 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 
-int lst_size(t_node *lst)
+#include "../push_swap.h"
+
+void	sort_3(t_node **lst)
 {
-	int size;
+	int	first;
+	int	scond;
+	int	third;
 	
-	size = 0;
-	while(lst->next)
-	{
-		size++;
-		lst = lst->next;
-	}
-	return (size);
+	first = (*lst)->index;
+	scond = (*lst)->next->index;
+	third = (*lst)->next->next->index;
+	
+	if (first > scond && scond < third && first < third)
+		sa(lst, 1);
+}
+void	sort_5(t_node **lst)
+{
+	
 }
