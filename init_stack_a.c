@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:19 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/22 20:12:29 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:01:48 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_node	*build_from_arr(int *arr, int size)
 
 	if (!arr || size <= 0)
 		return (ft_printf("Error\n"), NULL);
-	i = 0;
+	i = 1;
 	head = create_node(*arr);
 	if (head == (t_node *)NULL)
 		return (ft_printf("Error\n"), NULL);

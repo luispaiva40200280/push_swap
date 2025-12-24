@@ -6,27 +6,81 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:25:45 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/22 20:39:06 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/24 00:20:07 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../push_swap.h"
 
+
+
 void	sort_3(t_node **lst)
 {
 	int	first;
 	int	scond;
 	int	third;
-	
+
 	first = (*lst)->index;
 	scond = (*lst)->next->index;
-	third = (*lst)->next->next->index;
-	
+	third = -1;
+	if ((*lst)->next->next)
+		third = (*lst)->next->next->index;
 	if (first > scond && scond < third && first < third)
 		sa(lst, 1);
+	else if (first > scond && scond > third)
+	{
+		sa(lst, 1);
+	}
+	else if (first > scond && scond < third && first > third)
+		sa(lst, 1);
+	else if (first < scond && scond > third && first < third)
+	{
+		sa(lst, 1);
+		ra(lst, 1);
+	}
+	else if (first < scond && scond > third && first > third)
+		rra(lst, 1);
 }
-void	sort_5(t_node **lst)
+
+static void	push_small_b(t_node **lst, t_node **lst_b)
 {
+	t_node *tmp;
+	int		min;
+	int		pos;
+	int 	i;
 	
+	tmp = *lst;
+	min = tmp->index;
+	pos = 0; 
+	i = 0; 
+	while (tmp)
+	{
+		if (tmp->index < min)
+		{
+			min = tmp->index;
+			pos = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	if (pos <= lst_size(*lst) / 2)
+		while (pos-- > 0)
+			ra(lst, 1);
+	else 
+		while (pos++ < lst_size(*lst))
+			rra(lst, 1);
+	pa(lst, lst_b, 1);	
+}
+
+void	sort_5(t_node **lst, t_node **lst_b)
+{
+	int	size;
+	
+	size = lst_size(*lst);
+	while (size > 3)
+		push_small_b(lst, lst_b);
+	sort_3(lst);
+	while (*lst_b)
+		pa(lst, lst_b, 1);
 }
