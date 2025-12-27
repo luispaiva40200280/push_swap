@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:08 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/24 00:19:31 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/27 00:38:53 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
+// debuger helper 
+void print_stacks(t_node *a, t_node *b);
+
+void	print_list(t_node *head);
 /* creation of the stack and sorting*/
 t_node		*build_from_arr(int *arr, int size);
 void		free_list(t_node *head);
@@ -41,6 +45,8 @@ void		sa(t_node **lst, int to_print);
 void		rra(t_node **lst, int to_print);
 void		ra(t_node **lst, int to_print);
 void		pa(t_node **lst,t_node **lst_b, int to_print);
+void		pb(t_node **lst, t_node **lst_b, int to_print);
+void		radix_sort(t_node **lst, t_node **lst_b);
 
 /* helper func for ft_ptintf */
 int		ft_printf(const char *format, ...);

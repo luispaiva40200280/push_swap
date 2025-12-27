@@ -1,28 +1,34 @@
 
 #include "../push_swap.h"
 	
-void	pa(t_node **a,t_node **b, int to_print)
+void	pb(t_node **lst, t_node **lst_b, int to_print)
 {
-	t_node	*tmp;
+	t_node *tmp;
 
-	// If B is empty, do nothing
-	if (!b || !*b)
-		return;
-
-	// Save top of B
-	tmp = *b;
-
-	// Move B head to next node
-	*b = (*b)->next;
-
-	// Put tmp on top of A
-	tmp->next = *a;
-	*a = tmp;
-
+	if (!lst || !(*lst))
+		return ;
+	tmp = *lst;
+	*lst = (*lst)->next;
+	tmp->next = *lst_b;
+	*lst_b = tmp;
 	if (to_print)
-		ft_printf("pa\n");
-	
+		ft_printf("pb\n");	
 }
+
+void	pa(t_node **lst, t_node **lst_b, int to_print)
+{
+	t_node *tmp;
+
+	if (!lst_b || !(*lst_b))
+		return ;
+	tmp = *lst_b;
+	*lst_b = (*lst_b)->next;
+	tmp->next = *lst;
+	*lst = tmp;
+	if (to_print)
+		ft_printf("pa\n");	
+}
+
 void	sa(t_node **lst, int to_print)
 {
 	t_node	*first;
@@ -39,7 +45,6 @@ void	sa(t_node **lst, int to_print)
 	if (to_print)
 		ft_printf("sa\n");
 }
-
 
 void	rra(t_node **lst, int to_print)
 {
