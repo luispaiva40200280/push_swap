@@ -85,3 +85,21 @@ void	ra(t_node **lst, int to_print)
 	if (to_print)
 		ft_printf("ra\n");
 }
+
+void	rb(t_node **lst, int to_print)
+{
+	t_node	*first;
+	t_node	*last;
+
+	if (!lst || !(*lst) || !(*lst)->next)
+		return;
+	first = *lst;
+	*lst = first->next;
+	first->next = NULL;
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	last->next = first;
+	if (to_print)
+		ft_printf("rb\n");
+}

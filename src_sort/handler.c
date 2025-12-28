@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 02:16:00 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/27 00:38:55 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/27 18:54:25 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ void	handler_sort(t_node **lst)
 	lst_b = NULL;
 	//printf("lst_size = %d\n", lst_size(*lst));
 	if (is_sort(lst))
-		return ;
-	else if (lst_size(*lst) <= 3)
+		return ; 
+	else if (lst_size(*lst) == 2)
+        sa(lst, 1);
+    else if (lst_size(*lst) <= 3)
 		sort_3(lst);
 	else if (lst_size(*lst) <= 5)
 		sort_5(lst, &lst_b);

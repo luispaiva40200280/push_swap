@@ -33,3 +33,21 @@ t_node	*f_last(t_node *lst)
 		lst = lst->next;
 	return (lst);
 }
+
+t_node	*find_min_node(t_node *lst)
+{
+	t_node	*min;
+	t_node	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	min = lst;
+	while (tmp)
+	{
+		if (tmp->index < min->index)
+			min = tmp;
+		tmp = tmp->next;
+	}
+	return (min);
+}

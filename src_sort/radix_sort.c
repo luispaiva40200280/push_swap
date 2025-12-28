@@ -16,10 +16,10 @@
 		B: []        -> [1,0]
 		Push back B: A = [0,1,2,3]
  */ 
-int	max_nits(t_node *lst)
+size_t	max_bits(t_node *lst)
 {
 	int 	max;
-	ssize_t	bits;
+	size_t	bits;
 	t_node	*tmp;
 
 	max = 0;
@@ -38,12 +38,29 @@ int	max_nits(t_node *lst)
 
 void	radix_sort(t_node **lst, t_node **lst_b)
 {
-	t_node *tmp;
 	int 	i;
 	int 	j;
 	int 	size;
-	int 	bits;
+	size_t 	bits;
 	
-	
-	
+	bits = max_bits(*lst);
+	size = lst_size(*lst);
+	i = 0;
+	while (i < bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if(((*lst)->index >> i) & 1)
+				ra(lst, 1);
+			else
+				pb(lst, lst_b, 1);
+			j++;
+		}
+		while (*lst_b)
+			pa(lst, lst_b, 1);
+		if (is_sort(lst))
+			break;
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:19 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/23 19:01:48 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/28 00:37:17 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 //**** the creation of the linked list having the array as base;
 
 #include "push_swap.h"
+
+int	get_pos(t_node *lst, t_node *node)
+{
+	int	i;
+
+	i = 0;
+	while(lst)
+	{
+		if (lst == node)
+			return (i);
+		lst = lst->next;
+		i++;	
+	}
+	return (-1);
+}
 
 void	free_list(t_node *head)
 {
