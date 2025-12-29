@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 02:16:00 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/27 18:54:25 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/29 00:09:51 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	handler_sort(t_node **lst)
 	else if (lst_size(*lst) <= 5)
 		sort_5(lst, &lst_b);
 	else
-		radix_sort(lst, &lst_b);
+		butterfly_sort(lst, &lst_b);
 }

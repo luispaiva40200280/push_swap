@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:08 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/28 00:37:54 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/29 03:45:34 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@ typedef struct s_node
 }					t_node;
 
 // debuger helper 
+void	push_chunk_b(t_node **lst, t_node **lst_b, int chunk_start, int chunk_end);
 void print_stacks(t_node *a, t_node *b);
-
+void rrb(t_node **lst_b, int print);
 void	print_list(t_node *head);
+void	butterfly_sort(t_node **lst, t_node **lst_b);
 /* creation of the stack and sorting*/
 t_node		*build_from_arr(int *arr, int size);
 t_node		*find_min_node(t_node *lst);
+t_node		*find_bigest_node(t_node *lst);
 void		free_list(t_node *head);
+void		rotate_to_top(t_node **a, t_node *target);
 int			get_pos(t_node *lst, t_node *node);
 int			is_sort(t_node **lst);
 int			lst_size(t_node *lst);

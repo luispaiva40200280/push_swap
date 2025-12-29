@@ -51,3 +51,21 @@ t_node	*find_min_node(t_node *lst)
 	}
 	return (min);
 }
+
+t_node	*find_bigest_node(t_node *lst)
+{
+	t_node	*max;
+	t_node	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	max = lst;
+	while (tmp)
+	{
+		if (tmp->index > max->index)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max);
+}

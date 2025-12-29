@@ -1,19 +1,5 @@
 
 #include "../push_swap.h"
-	
-void	pb(t_node **lst, t_node **lst_b, int to_print)
-{
-	t_node *tmp;
-
-	if (!lst || !(*lst))
-		return ;
-	tmp = *lst;
-	*lst = (*lst)->next;
-	tmp->next = *lst_b;
-	*lst_b = tmp;
-	if (to_print)
-		ft_printf("pb\n");	
-}
 
 void	pa(t_node **lst, t_node **lst_b, int to_print)
 {
@@ -84,22 +70,4 @@ void	ra(t_node **lst, int to_print)
 	last->next = first;
 	if (to_print)
 		ft_printf("ra\n");
-}
-
-void	rb(t_node **lst, int to_print)
-{
-	t_node	*first;
-	t_node	*last;
-
-	if (!lst || !(*lst) || !(*lst)->next)
-		return;
-	first = *lst;
-	*lst = first->next;
-	first->next = NULL;
-	last = *lst;
-	while (last->next)
-		last = last->next;
-	last->next = first;
-	if (to_print)
-		ft_printf("rb\n");
 }

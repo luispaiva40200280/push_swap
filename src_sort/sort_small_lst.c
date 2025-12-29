@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:25:45 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/28 01:44:49 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/28 22:43:21 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,15 @@
 
 void sort_3(t_node **lst)
 {
-    int first, second, third;
+	t_node *big_node;
 
-    if (!lst || !(*lst) || !(*lst)->next || !(*lst)->next->next)
-        return;
-    first = (*lst)->index;
-    second = (*lst)->next->index;
-    third = (*lst)->next->next->index;
-    if (first < second && second < third)
-        return;
-    else if (first < third && third < second)
-    {
-        sa(lst, 1);
-        ra(lst, 1);
-    }
-    else if (second < first && first < third)
-        sa(lst, 1);
-    else if (second < third && third < first)
-        rra(lst, 1);
-    else if (third < first && first < second)
-        ra(lst, 1);
-    else if (third < second && second < first)
-    {
-        sa(lst, 1);
-        rra(lst, 1);
-    }
+	big_node = find_bigest_node(*lst);
+	if (big_node == *lst)
+		ra(lst, 1);
+	else if ((*lst)->next == big_node)
+		rra(lst,1);
+	if ((*lst)->index > (*lst)->next->index)
+		sa(lst,1);
 }
 
 
