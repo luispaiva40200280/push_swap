@@ -38,3 +38,4 @@ elif [[ $SIZE -eq 500 ]]; then
         echo "⚠ 500 numbers: does NOT pass 100% benchmark"
     fi
 fi
+
