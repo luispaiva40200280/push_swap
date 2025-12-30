@@ -19,6 +19,11 @@ static void	move_max_top(t_node **lst_b, t_node *max_node, int size)
 	int	pos;
 
 	pos = get_pos(*lst_b, max_node);
+	if (pos == 1)
+	{
+		sb(lst_b, 1);
+		return ;
+	}
 	if (pos <= size / 2)
 		while (*lst_b != max_node)
 			rb(lst_b, 1);
