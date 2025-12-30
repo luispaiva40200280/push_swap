@@ -33,16 +33,29 @@ t_node	*f_last(t_node *lst)
 		lst = lst->next;
 	return (lst);
 }
+//min and max index
+int lst_min_ind(t_node **lst)
+{
+	int	min;
+	t_node	*tmp;
 
-t_node	*find_min_node(t_node *lst)
+	tmp = *lst;
+	min = tmp->index;
+	while (tmp)
+	{
+		if (tmp->index < min)
+			min = tmp->index;
+		tmp = tmp->next;
+	}
+	return (min);
+}
+t_node		*find_min_node(t_node *lst)
 {
 	t_node	*min;
 	t_node	*tmp;
 
-	if (!lst)
-		return (NULL);
 	tmp = lst;
-	min = lst;
+	min = tmp;
 	while (tmp)
 	{
 		if (tmp->index < min->index)
@@ -50,17 +63,33 @@ t_node	*find_min_node(t_node *lst)
 		tmp = tmp->next;
 	}
 	return (min);
+	
 }
 
-t_node	*find_bigest_node(t_node *lst)
+int lst_max_ind(t_node **lst)
+{
+	int	max;
+	t_node	*tmp;
+
+	tmp = *lst;
+	max = tmp->index;
+	while (tmp)
+	{
+		if (tmp->index > max)
+			max = tmp->index;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+
+t_node		*find_bigest_node(t_node *lst)
 {
 	t_node	*max;
 	t_node	*tmp;
 
-	if (!lst)
-		return (NULL);
 	tmp = lst;
-	max = lst;
+	max = tmp;
 	while (tmp)
 	{
 		if (tmp->index > max->index)

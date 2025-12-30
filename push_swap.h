@@ -6,7 +6,7 @@
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 01:31:08 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/29 03:45:34 by lpaiva           ###   ########.fr       */
+/*   Updated: 2025/12/29 21:48:05 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push_chunk_b(t_node **lst, t_node **lst_b, int chunk_start, int chunk_end);
 void print_stacks(t_node *a, t_node *b);
 void rrb(t_node **lst_b, int print);
 void	print_list(t_node *head);
-void	butterfly_sort(t_node **lst, t_node **lst_b);
+void	butterfly_sort(t_node **lst, t_node **lst_b, int size);
 /* creation of the stack and sorting*/
 t_node		*build_from_arr(int *arr, int size);
 t_node		*find_min_node(t_node *lst);
