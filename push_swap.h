@@ -5,73 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/14 01:31:08 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/29 21:48:05 by lpaiva           ###   ########.fr       */
+/*   Created: 2025/12/30 19:06:44 by lpaiva            #+#    #+#             */
+/*   Updated: 2026/01/09 18:46:04 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-/*all lib need  */
+/*------  all lib need ----------- */
+# include <limits.h>
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
-# include <stdarg.h>  
-
+/* ------------------------ */
 typedef struct s_node
 {
 	int				value;
 	int				index;
 	struct s_node	*next;
 }					t_node;
+/*---- functions for linked lists {utils && craetion} -----*/
+t_node				*init_stack_a(long *arr_nbrs, int size);
+t_node				*find_min_node(t_node *lst);
+t_node				*find_max_node(t_node *lst);
+void				handler_sort_type(t_node **lst_a);
+int					lst_size(t_node *lst);
+int					get_pos(t_node **lst, t_node *target);
+void				free_stack(t_node *head);
 
-// debuger helper 
-void	push_chunk_b(t_node **lst, t_node **lst_b, int chunk_start, int chunk_end);
-void print_stacks(t_node *a, t_node *b);
-void rrb(t_node **lst_b, int print);
-void	print_list(t_node *head);
-void	butterfly_sort(t_node **lst, t_node **lst_b, int size);
-/* creation of the stack and sorting*/
-t_node		*build_from_arr(int *arr, int size);
-t_node		*find_min_node(t_node *lst);
-t_node		*find_bigest_node(t_node *lst);
-void		free_list(t_node *head);
-void		rotate_to_top(t_node **a, t_node *target);
-int			get_pos(t_node *lst, t_node *node);
-int			is_sort(t_node **lst);
-int			lst_size(t_node *lst);
-int			lst_min_ind(t_node **lst);
-int			lst_max_ind(t_node **lst);
-void		handler_sort(t_node **lst);
-void		sort_3(t_node **lst);
-void		sort_5(t_node **lst, t_node **lst_b);
-void		ass_index(t_node *lst);
-void		sa(t_node **lst, int to_print);
-void		rra(t_node **lst, int to_print);
-void		ra(t_node **lst, int to_print);
-void		rb(t_node **lst, int to_print);
-void		pa(t_node **lst,t_node **lst_b, int to_print);
-void		pb(t_node **lst, t_node **lst_b, int to_print);
-void		radix_sort(t_node **lst, t_node **lst_b);
-void		push_small_b(t_node **lst, t_node **lst_b);
+/* **** functions to sort list (sort >> 3 && sort >> 5 && butterfly) */
+void				sort_lst_3(t_node **lst_a);
+void				sort_lst_5(t_node **lst_a, t_node **lst_b);
+void				butterfly_sort(t_node **lst_a, t_node **lst_b, int size_a);
+/*----- operations too the stacks  -----*/
+/*----- stack A*/
+void				pa(t_node **lst, t_node **lst_b, int print);
+void				rra(t_node **lst, int print);
+void				ra(t_node **lst, int print);
+void				sa(t_node **lst, int print);
+/* ------stack B */
+void				pb(t_node **lst, t_node **lst_b, int print);
+void				rrb(t_node **lst, int print);
+void				rb(t_node **lst, int print);
+void				sb(t_node **lst, int print);
+/*---- both stacks A && B"mostly for the ckecker {bonus}"  */
+void				ss(t_node **lst_a, t_node **lst_b, int print);
+void				rr(t_node **lst_a, t_node **lst_b, int print);
+void				rrr(t_node **lst_a, t_node **lst_b, int print);
 
-/* helper func for ft_ptintf */
-int		ft_printf(const char *format, ...);
-int 	ft_putnbr_base(long long nbr, char *base, int base_zise, int count);
-int 	ft_putnbr_base_uns(unsigned long long nbr, char *base, int base_zise, int count);
-int		ft_ptptr(void *ptr, int count);
+/*---- functions for printin erros && operations -----*/
+int					ft_dprintf(int fd, const char *format, ...);
+int					ft_putnbr_base(long nbr, char *base, int len, int fd);
+int					ft_putnbr_base_uns(unsigned long nbr, char *base, int size,
+						int fd);
+int					ft_putchar(char c, int count, int fd);
+int					ft_putstr(char *str, int count, int fd);
+int					ft_ptptr(void *ptr, int count, int fd);
 
-/* helper func for ft_spit */
-char	**ft_split(const char *str, char c);
-char	*ft_strndup(char *str, int n);
-int		ft_countwords(const char *str, int c);
-int 	ft_find_number(int *numbers, int size, int value);
-int		ft_strchr(const char *str, char c);
+/* -------- parser functions  ------ */
+long				ft_atol(char *str);
+/*parser for the arr */
 
-/* helper func for atol */
-int		ft_atol(char *str);
+int					find_number_arr(long *numbers, int size, long value);
+int					arr_size(char **str);
+long				*init_arr(char **av, long *arr_nbrs, int size);
+/* -------- ft_split functions ------ */
+char				*ft_strndup(char *str, int n);
+char				**ft_split(char const *s, char c);
+void				free_mem(char **arr, size_t j);
+
+/*----- DEBUGGING ----*/
+void				print_list(t_node *head);
+int					ft_issort(t_node **lst_a);
+
+/*---- GET NEXT LINE OPERACTIONS AND LIB  ---*/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+unsigned int		ft_strlen(const char *str);
+char				*ft_strjoin_free(char *s1, const char *s2);
+unsigned char		*ft_strchr(const char *s, int c);
+char				*get_next_line(int fd);
 
 #endif

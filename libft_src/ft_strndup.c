@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaiva <lpaiva@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 20:40:12 by lpaiva            #+#    #+#             */
-/*   Updated: 2025/12/18 21:16:11 by lpaiva           ###   ########.fr       */
+/*   Created: 2025/12/30 21:53:42 by lpaiva            #+#    #+#             */
+/*   Updated: 2025/12/30 22:57:07 by lpaiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int ft_atol(char *str)
+char	*ft_strndup(char *str, int n)
 {
-	long number;
-	int i;
-	int sign;
-	 
+	char	*strdup;
+	int		i;
+
+	strdup = (char *)malloc((n + 1) * sizeof(char));
+	if (!strdup)
+		return (NULL);
 	i = 0;
-	sign = 1;
-	if (str[i] == '-')
+	while (i < n)
 	{
-		sign = -1;
+		strdup[i] = str[i];
 		i++;
-	}else if (str[i] == '+')
-		i++;
-	number = 0;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-        number = (number * 10) + (str[i] - '0');
-        i++;
 	}
-	number = number * sign;
-	if (number > INT_MAX || number < INT_MIN)
-		return (ft_printf("error\n"), 0);
-	return ((int)number);
+	strdup[i] = '\0';
+	return (strdup);
 }
